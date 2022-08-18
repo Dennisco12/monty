@@ -44,17 +44,21 @@ void tokenise(char *buffer, stack_t1 *stack, unsigned int line_number)
 	char *token_str;
 	char *line_arr[50];
 	char *str_arr[50];
-	int j = 0, n = 0;
+	int j = 1, n = 0;
 	char *second;
 	char *k = "-1";
 
 	line_number = 1;
 	token_line = strtok(buffer, "\n");
-	line_arr[j] = token_line;
-	j++;
-	while (token_line != NULL)
+	line_arr[0] = token_line;
+	while (token_line)
 	{
 		token_line = strtok(NULL, "\n");
+		if (token_line[0] == '#')
+		{
+			j++;
+			continue;
+		}
 		line_arr[j] = token_line;
 		j++;
 	}

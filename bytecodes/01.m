@@ -8,4 +8,3 @@ pint
 pall
 add
 pop
-pall
