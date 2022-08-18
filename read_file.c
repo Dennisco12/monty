@@ -13,7 +13,7 @@ char *read_file(char *filename)
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 	{
-		dprintf(2, "Error: Can't open file %s\n", filename);
+		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
 
@@ -21,7 +21,7 @@ char *read_file(char *filename)
 	bytes_read = read(fd, buffer, 1024);
 	if (bytes_read == 0)
 	{
-		dprintf(2, "%s file is empty\n", filename);
+		fprintf(stderr, "%s file is empty\n", filename);
 		exit(EXIT_FAILURE);
 	}
 	close(fd);
@@ -41,14 +41,13 @@ char *push_args[50];
 void tokenise(char *buffer, stack_t1 *stack, unsigned int line_number)
 {
 	char *token_line;
-	char *token_str;
 	char *line_arr[50];
 	char *str_arr[50];
-	int j = 1, n = 0;
+	int j = 1;
 	char *second;
 	char *k = "-1";
+	(void)line_number;
 
-	line_number = 1;
 	token_line = strtok(buffer, "\n");
 	line_arr[0] = token_line;
 	while (token_line)
@@ -67,7 +66,7 @@ void tokenise(char *buffer, stack_t1 *stack, unsigned int line_number)
 	{
 		if (line_arr[j] == NULL)
 		{
-			dprintf(2, "L%d: line empty\n", j + 1);
+			fprintf(stderr, "L%d: line empty\n", j + 1);
 			break;
 		}
 		str_arr[j] = strtok(line_arr[j], " ");
@@ -95,7 +94,7 @@ void tokenise(char *buffer, stack_t1 *stack, unsigned int line_number)
 void get_op(char **str, stack_t1 *stack)
 {
 	int i = 0;
-	int j = 0, k = 0;
+	int j = 0;
 	void (*oper)(stack_t1 **, unsigned int);
 	instruction_t function[] = {
 		{"push", _push},
@@ -114,7 +113,7 @@ void get_op(char **str, stack_t1 *stack)
 
 	if (str == NULL)
 	{
-		dprintf(2, "no instruction found\n");
+		fprintf(stderr, "no instruction found\n");
 		exit(EXIT_FAILURE);
 	}
 	while (str[j])

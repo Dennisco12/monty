@@ -14,13 +14,13 @@ void _pall(stack_t1 **stack, unsigned int line_number)
 	temp = malloc(sizeof(stack_t1));
 	if (!temp)
 	{
-		dprintf(2, "malloc failed\n");
+		fprintf(stderr, "malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	temp = *stack;
 	if (!temp)
 	{
-		dprintf(2, "Empty list\n");
+		fprintf(stderr, "Empty list\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -47,7 +47,7 @@ void _swap(stack_t1 **stack, unsigned int line_number)
 
 	if (!(*stack))
 	{
-		dprintf(2, "L%d: empty stack\n", line_number);
+		fprintf(stderr, "L%d: empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -56,7 +56,7 @@ void _swap(stack_t1 **stack, unsigned int line_number)
 
 	if (head->next == NULL)
 	{
-		dprintf(2, "L%d: can't swap,stack too short\n", line_number);
+		fprintf(stderr, "L%d: can't swap,stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -78,7 +78,7 @@ void _pint(stack_t1 **stack, unsigned int line_number)
 	temp = *stack;
 	if (!temp)
 	{
-		dprintf(2, "L%d: can't pint, stack empty\n", line_number);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -103,7 +103,7 @@ void _pop(stack_t1 **stack, unsigned int line_number)
 	first = *stack;
 	if (!first)
 	{
-		dprintf(2, "L%d: can't pop an empty stack", line_number);
+		fprintf(stderr, "L%d: can't pop an empty stack", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -130,13 +130,13 @@ void _add(stack_t1 **stack, unsigned int line_number)
 	temp2 = malloc(sizeof(stack_t1));
 	if (!temp2)
 	{
-		dprintf(2, "Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 
 	if (!temp || temp->next == NULL)
 	{
-		dprintf(2, "L%d: can't add, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 

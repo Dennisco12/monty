@@ -10,7 +10,6 @@ void _push(stack_t1 **stack, unsigned int line_number)
 {
 	stack_t1 *temp;
 	stack_t1 *new;
-	int n = 0;
 	char *arg;
 
 	temp = *stack;
@@ -19,7 +18,7 @@ void _push(stack_t1 **stack, unsigned int line_number)
 	arg = push_args[line_number - 1];
 	if (atoi(arg) == -1)
 	{
-		dprintf(2, "L%d: usage: push integer\n", line_number);
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	new->n = atoi(arg);

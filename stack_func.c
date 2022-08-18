@@ -15,7 +15,7 @@ void _mod(stack_t1 **stack, unsigned int line_number)
 	temp = *stack;
 	if (temp == NULL || temp->next == NULL)
 	{
-		dprintf(2, "L%d: can;t mod, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can;t mod, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -25,7 +25,7 @@ void _mod(stack_t1 **stack, unsigned int line_number)
 	temp2 = malloc(sizeof(stack_t1));
 	if (!temp2)
 	{
-		dprintf(2, "Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -63,7 +63,7 @@ void _mul(stack_t1 **stack, unsigned int line_number)
 	temp = *stack;
 	if (temp == NULL || temp->next == NULL)
 	{
-		dprintf(2, "L%d: can;t mul, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can;t mul, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -73,7 +73,7 @@ void _mul(stack_t1 **stack, unsigned int line_number)
 	temp2 = malloc(sizeof(stack_t1));
 	if (!temp2)
 	{
-		dprintf(2, "Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -99,7 +99,7 @@ void _div(stack_t1 **stack, unsigned int line_number)
 	temp = *stack;
 	if (temp == NULL || temp->next == NULL)
 	{
-		dprintf(2, "L%d: can't div, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -108,13 +108,13 @@ void _div(stack_t1 **stack, unsigned int line_number)
 
 	if (p == 0)
 	{
-		dprintf(2, "L%d: division by zero\n", line_number);
+		fprintf(stderr, "L%d: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	temp2 = malloc(sizeof(stack_t1));
 	if (temp2 == NULL)
 	{
-		dprintf(2, "Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -141,13 +141,13 @@ void _sub(stack_t1 **stack, unsigned int line_number)
 	temp2 = malloc(sizeof(stack_t1));
 	if (!temp2)
 	{
-		dprintf(2, "Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 
 	if (temp == NULL || temp->next == NULL)
 	{
-		dprintf(2, "L%d: can't subtract, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can't subtract, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 

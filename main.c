@@ -8,20 +8,18 @@
  */
 int main(int argc, char *argv[])
 {
-	if (argc != 2)
-	{
-		dprintf(2, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
-
 	char *buffer;
 	stack_t1 *stack;
 	unsigned int line_number;
-	int i = 0;
-	int *str;
 
+	if (argc != 2)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
 	stack = NULL;
 	buffer = read_file(argv[1]);
+	line_number = 0;
 	tokenise(buffer, stack, line_number);
 
 	freelist(stack);
